@@ -20,8 +20,6 @@ services:
     build: ./api/
     ports: 
       - "8080:8080"
-    depends_on: 
-      - db 
   mail:
     image: bytemark/smtp
     restart: always
