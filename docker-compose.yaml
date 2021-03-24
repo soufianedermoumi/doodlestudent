@@ -1,0 +1,51 @@
+version: "3.7"
+services:
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_ROOT_PASSWORD=tlc
+      - MYSQL_DATABASE=tlc
+      - MYSQL_USER=tlc
+      - MYSQL_PASSWORD=tlc
+  etherpad:
+    image: etherpad/etherpad:stable
+    ports:
+      - "9001:9001"
+    volumes:
+      - ./api/APIKEY.txt:/opt/etherpad-lite/APIKEY.txt
+  back:
+    build: ./api/
+    ports: 
+      - "8080:8080"
+  mail:
+    image: bytemark/smtp
+    restart: always
+    ports:
+      - "2525:25"
+  front:
+    build: ./front/
+    ports:
+      - 80:8080
+      - 443:8443
+    volumes:
+      - ./api/server-confs:/server-confs:ro
+      # - ./certificates:/etc/letsencrypt
+    environment:
+      - USE_CLIENT_CACHE=yes
+  myadmin:
+    image : phpmyadmin
+    ports:
+      - "8082:80"  
+  # front:
+  #   image: bunkerity/bunkerized-nginx
+  #   restart: always
+  #   ports:
+  #     - 80:8080
+  #   volumes:
+  #     - ./distfront:/www:ro
+  #     - ./server-confs:/server-confs:ro
+  #   environment:
+  #     - USE_CLIENT_CACHE=yes
