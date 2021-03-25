@@ -32,7 +32,7 @@ services:
       - 443:8443
     volumes:
       - ./api/server-confs:/server-confs:ro
-      - ./certificates:/etc/letsencrypt
+      - ./certificates:/etc/letsencrypt:rw
     environment:
       - SERVER_NAME=dshs.istic.univ-rennes1.fr
       - AUTO_LETS_ENCRYPT=yes

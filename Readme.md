@@ -13,3 +13,31 @@ Three videos (in french) are available. They present:
 - and a [short code review](https://drive.google.com/file/d/1jxYNfJdtd4r_pDbOthra360ei8Z17tX_/preview) .
 
 For french native speaker that wants to follow the course. The course web page is available [here](https://hackmd.diverse-team.fr/s/SJqu5DjSD).
+
+### Tâche 0
+
+Notre machine virtuelle a comme adresse IP : **148.60.11.192**, et des ports ouverts : **80** et **443**
+Nous avons demandé un sous-domaine **hsds.reverse-team.fr** mais malhereusement ça n'a pas été réservé 🤷‍♂️.
+
+### Tâche 1
+
+nous utilisons un seul fichier docker-compose qui se trouve à la racine du répertoire pour lancer l'ensemble de notre application, avec un fichier DockerFile `./api/Dockerfile` pour faire tourner le back et un fichier DockerFile `./front/Dockerfile` pour le front de l'application.
+
+
+### Tâches 2 et 3
+
+On utilise une image bunkerity/bunkerized-nginx pour le front de l'application, cette image offre la possibilité de configurer la redirection sur les différents services de l’application.  
+A cette étape on notera qu’il y a eu des problèmes avec la récupération des certificats let's encrypt pour des raisons de permissions 😭 :   
+```
+front_1     | Saving debug log to /var/log/letsencrypt/letsencrypt.log
+front_1     | The following error was encountered:
+front_1     | [Errno 13] Permission denied: '/etc/letsencrypt/.certbot.lock'
+front_1     | Either run as root, or set --config-dir, --work-dir, and --logs-dir to writeable paths.
+```
+et aussi vu que notre sous domaine n'était pas attribué, la redirection sur les services pad, phpmyadmin, ... ne fonctionne pas comme il faut.
+
+### Tâche 4
+
+À cette étape, l’application est déployée de cette façon.
+
+![](./diagramme.png)
