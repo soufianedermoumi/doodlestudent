@@ -14,6 +14,20 @@ Three videos (in french) are available. They present:
 
 For french native speaker that wants to follow the course. The course web page is available [here](https://hackmd.diverse-team.fr/s/SJqu5DjSD).
 
+## Binômes:
+
+- Soufiane DERMOUMI
+- Said HADIM
+
+**Tâches faites :**
+
+- [x] Tâche 0
+- [x] Tâche 1
+- [x] Tâche 2
+- [x] Tâche 3
+- [x] Tâche 4
+
+
 ### Tâche 0
 
 Notre machine virtuelle a comme adresse IP : **148.60.11.192**, et des ports ouverts : **80** et **443**
